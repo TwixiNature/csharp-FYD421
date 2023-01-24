@@ -13,3 +13,6 @@ tas om hand. Använd try/catch och fånga lämpligt undantag (exception). Glöm 
 programmet. Om t.ex. en kund handlar för 371,38 kr avrundas beloppet till 371,50 kr. Om kunden 
 betalar med en 1000 kr-sedel ska kunden få 628,50 kr tillbaka, fördelat enligt figuren.
 */
+
+using System;
+
