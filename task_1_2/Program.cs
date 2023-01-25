@@ -44,9 +44,7 @@ namespace store
             {
                 Console.WriteLine("You payed too little, try again");
                 sum = tryReadDouble("What did you pay?");
-            }
-        
-            
+            }            
 
             // calc diff
             dif = sum - cost;
