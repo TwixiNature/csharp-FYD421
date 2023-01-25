@@ -12,5 +12,27 @@
                 Console.WriteLine(q);
             };
         }
+        static public double tryReadDouble (string q)
+        {
+            bool correct = false;
+            double cost = 0;
+            //get cost (exception handling)
+            while (!correct)
+            {
+                Console.WriteLine(q);
+                try
+                {
+                    cost = Convert.ToDouble(Console.ReadLine());
+                    correct = true; // if conversion worked
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine(ex.Message); // print exception
+                }
+            }
+            return cost;
+
+        }
+
     }
 }

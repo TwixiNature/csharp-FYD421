@@ -15,4 +15,54 @@ betalar med en 1000 kr-sedel ska kunden få 628,50 kr tillbaka, fördelat enligt
 */
 
 using System;
+using static UserInputFunctions.UserInputFunctions;
 
+namespace store
+{
+    internal class cashier
+    {
+        static void Main(string[] args)
+        {
+            double cost = 0;
+            double sum = 0;
+            double dif = 0;
+
+
+            cost = tryReadDouble("What did it cost?"); //we made a library with exception handling
+
+            //BEST ROUND UP FUNCTION I'VE EVER DONE
+            //round up cost to closest 50 öre
+            //how many times is cost divisable with 0.5?
+            //math.ceiling rounds it up to the closest integer (in double format) 
+            // and then multiplied by 0.5
+            cost = Math.Ceiling(cost / 0.5) * 0.5;
+
+
+            sum = tryReadDouble("What did you pay?"); // we made a library with exception handling
+
+            while (sum < cost) //if you payed too little, try again
+            {
+                Console.WriteLine("You payed too little, try again");
+                sum = tryReadDouble("What did you pay?");
+            }
+        
+            
+
+            // calc diff
+            dif = sum - cost;
+
+            Console.WriteLine($"You get {dif} kronor back"); // the total sum back
+
+            double[] money = { 1000, 500, 200, 100, 50, 20, 10, 5, 1, 0.5 }; // array for the different notes
+
+            foreach (double note in money) // for each available note going from biggest to smallest
+            {
+                if(dif / note>=1) //if the current note fits in difference
+                {
+                    Console.WriteLine($"{(int)(dif / note)} of {note}"); // print how many you can give out, ex 5 st 200
+                    dif = dif - (int)(dif / note) * note; // and subtract 5 * 200 from difference
+                }
+            }
+        }
+    }
+}
