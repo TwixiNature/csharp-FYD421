@@ -57,7 +57,19 @@ namespace store
             {
                 if(dif / note>=1) //if the current note fits in difference
                 {
-                    Console.WriteLine($"{(int)(dif / note)} of {note}"); // print how many you can give out, ex 5 st 200
+                    if(note> 10) //just different prints for different notes
+                    {
+                        Console.WriteLine($"{note}-lappar : {(int)(dif / note)}"); // print how many you can give out, ex 5 st 200
+                    }
+                    else if( note > 0.5)
+                    {
+                        Console.WriteLine($"{note}-kronor : {(int)(dif / note)}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"50-öring : {(int)(dif / note)}");
+                    }
+                    
                     dif = dif - (int)(dif / note) * note; // and subtract 5 * 200 from difference
                 }
             }
