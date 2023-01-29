@@ -13,7 +13,6 @@ namespace Game
         {
             Random rnd = new Random(); //initiate instance of random class
             int[] arr = {0,0}; //int array for keeping track of outcomes
-            int[] arr2= new int[6];
             for(int i =0; i < 10000; i++) { // 10 000 iterations
                 int dice = rnd.Next(1, 7); //random int between 1-6
                 if (dice == 2) // if 2
@@ -26,6 +25,7 @@ namespace Game
                 }
             }
 
+            int[] arr2= new int[6];
             for (int i = 0; i < 10000; i++) // alternatively
             { // 10 000 iterations
                 arr2[rnd.Next(0, 6)]++; //random int between 1-6
