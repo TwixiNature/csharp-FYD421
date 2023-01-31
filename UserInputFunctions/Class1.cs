@@ -2,10 +2,10 @@
 {
     public class UserInputFunctions
     {
-        static public void ReadInt(string q, out int output)
+        static public void ReadInt(string q, out int output, Func<int,bool> pred)
         {
             Console.Write(q);
-            while (!int.TryParse(Console.ReadLine(), out output))
+            while (!int.TryParse(Console.ReadLine(), out output) && pred(output))
             {
                 Console.WriteLine("Expected integer, please try your input again!");
                 Console.WriteLine();
