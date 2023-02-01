@@ -19,7 +19,7 @@ namespace calculation
             int a , b, N;
             double n, sum = 0 ; 
             ReadInt("Set start of integral, a= ?", out a); //set start of integral
-            ReadInt("Set ebd of integral, b= ?", out b); //set end of integral
+            ReadInt("Set end of integral, b= ?", out b); //set end of integral
             ReadInt("Set number of sections, N= ?", out N); //set number of sections
 
             
