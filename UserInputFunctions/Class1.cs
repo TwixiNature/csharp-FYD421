@@ -12,6 +12,17 @@
                 Console.WriteLine(q);
             };
         }
+
+        static public void ReadIntwithLimit(string q, out int output, int lowlim, int upperlim) //  Func<int,bool> pred
+        {
+            Console.Write(q);
+            while (!int.TryParse(Console.ReadLine(), out output) || output < lowlim || output > upperlim) //&& pred(output)
+            {
+                Console.WriteLine($"Expected integer between {lowlim} and {upperlim}, please try your input again!");
+                Console.WriteLine();
+                Console.WriteLine(q);
+            };
+        }
         static public double tryReadDouble(string q)
         {
             bool correct = false;
