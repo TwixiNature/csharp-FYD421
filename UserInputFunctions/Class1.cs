@@ -12,7 +12,7 @@
                 Console.WriteLine(q);
             };
         }
-        static public double tryReadDouble (string q)
+        static public double tryReadDouble(string q)
         {
             bool correct = false;
             double cost = 0;
@@ -32,6 +32,26 @@
             }
             return cost;
 
+        }
+        static public string ReadString(string q)
+        {
+            bool correct = false;
+            string str = "0";
+            //get cost (exception handling)
+            while (!correct)
+            {
+                Console.WriteLine(q);
+                try
+                {
+                    str = Console.ReadLine();
+                    correct = true; // if conversion worked
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine(ex.Message); // print exception
+                }
+            }
+            return str;
         }
 
     }
