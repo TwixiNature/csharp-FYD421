@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 
 namespace Sorting
 {
@@ -40,17 +41,21 @@ namespace Sorting
             list.Add(new Student("Adrian", 2));
             list.Add(new Student("Badrian", -2));
 
+            Console.WriteLine("List before sorting");
             list.ForEach(student => Console.WriteLine(student.name + " " + student.age));
             Console.WriteLine();
             list.Sort();
+            Console.WriteLine("List after general sorting");
             list.ForEach(student => Console.WriteLine(student.name + " " + student.age));
             Console.WriteLine();
             list.Sort(new CompareAge());
+            Console.WriteLine("List after age sorting");
             list.ForEach(student => Console.WriteLine(student.name + " " + student.age));
             Console.WriteLine();
             list.Sort(new CompareName());
+            Console.WriteLine("List after name sorting");
             list.ForEach(student => Console.WriteLine(student.name + " " + student.age));
-            
+
         }
 
         public int CompareTo(Student? other)

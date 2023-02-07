@@ -26,18 +26,22 @@ namespace MathClass
             switch (choice)
             {
                 case 1:
+                    Console.WriteLine("You chose rectangle");
                     rectangle rect = new rectangle();
                     Console.WriteLine($"Circumference is {rect.calc_circfrc()}");
                     break;
                 case 2:
+                    Console.WriteLine("You chose triangle");
                     triangle tri = new triangle();
                     Console.WriteLine($"Circumference is {tri.calc_circfrc()}");
                     break;
                 case 3:
+                    Console.WriteLine("You chose circle");
                     circle crc = new circle();
                     Console.WriteLine($"Circumference is {crc.calc_circfrc()}");
                     break;
                 case 4:
+                    Console.WriteLine("You chose square");
                     square sqr = new square();
                     Console.WriteLine($"Circumference is {sqr.calc_circfrc()}");
                     break;

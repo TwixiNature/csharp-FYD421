@@ -72,14 +72,17 @@ namespace Game
             return Tuple.Create(nrSixes, nrOneTwoThree);
         }
 
+    }
+    class Program
+    {
         static void Main(string[] args)
         {
 
-            int throws = 0;
+            int throws;
 
             ReadInt("How many throws?", out throws); // get throws from player
 
-            Tuple<int, int> result = gameloop(throws);
+            Tuple<int, int> result = dice.gameloop(throws);
 
             Console.WriteLine($"You had {result.Item1} st 6-6-6 and {result.Item2} st 1-2-3"); // print result
 

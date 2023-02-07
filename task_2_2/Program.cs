@@ -6,28 +6,34 @@ därför instansvariabeln som readonly. */
 
 using System;
 
-namespace Rainbow
+//can you not make an instance of the class you have main in?
+
+namespace Learning
 {
-    internal class Classy
+    internal class Classtest
     {
         static int nrObj = 0;
         readonly int ID;
 
-        public Classy()
+        public Classtest()
         {
             nrObj++;
             ID = nrObj;
         }
 
-        static int returnNr() { return nrObj; }
+        public static int returnNr() { return nrObj; }
+    }
 
+    class Program
+    {
         static void Main(string[] args)
         {
-            Classy obj1 = new Classy();
-            Console.WriteLine($"number of objects {returnNr()}");
-            Classy obj2 = new Classy(); ;
-            Console.WriteLine($"number of objects {returnNr()}");
+            Classtest obj1 = new Classtest();
+            Console.WriteLine($"number of objects {Classtest.returnNr()}");
+            Classtest obj2 = new Classtest(); ;
+            Console.WriteLine($"number of objects {Classtest.returnNr()}");
 
         }
     }
+
 }
