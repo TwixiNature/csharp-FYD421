@@ -14,6 +14,7 @@ namespace task_3_10
         [STAThread]
         static void Main()
         {
+            Console.WriteLine("hej");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
