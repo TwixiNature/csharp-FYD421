@@ -7,26 +7,26 @@ namespace bowling
 {
     internal class Bowling
     {
-        string name = null;
+        string? name = null; //empty until player name set
         int[] score = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
         int combo = 0;
 
-        public void setName()
+        public void setName() // set name of player at start of game
         {
             this.name = ReadString("PLayer name?");
         }
 
-        public void printscore(int i)
+        public void printscore(int round) //print score so far
         {
             Console.Write($"{this.name}: Score  [ ");
-            for (int j = 0; j <= i; j++)
+            for (int j = 0; j <= round; j++)
             {
                 Console.Write($" {this.score[j]} ");
             }
             Console.WriteLine(" ]");
         }
 
-        public void round(int i)
+        public void round(int i) // one round for one player
         {
             Console.WriteLine($"{this.name}'s turn");
             Console.WriteLine($"Round {i + 1}: throw 1");
@@ -91,7 +91,7 @@ namespace bowling
             Bowling player2 = new Bowling();
             Bowling player3 = new Bowling();
 
-            ReadInt("How many players? 1-3 possible", out nrPlayers); // the players
+            ReadIntwithLimit("How many players? 1-3 possible ", out nrPlayers, 1, 3); // the players
 
             player1.setName();
             if (nrPlayers > 1)
@@ -121,15 +121,23 @@ namespace bowling
             }
 
             Console.WriteLine("Your score was in total:"); // the score
-            player1.printscore(10);
+            player1.printscore(9);
+            Console.WriteLine($"Total : {player1.score.Sum()}");
             if (nrPlayers > 1)
             {
-                player2.printscore(10);
+                player2.printscore(9);
+                Console.WriteLine($"Total : {player2.score.Sum()}");
                 if (nrPlayers > 2)
                 {
-                    player3.printscore(10);
+                    player3.printscore(9);
+                    Console.WriteLine($"Total : {player3.score.Sum()}");
                 }
             }
+
+
+
+
+
         }
 
         static bool IsSpare(int hit1, int hit2) //from 1.5

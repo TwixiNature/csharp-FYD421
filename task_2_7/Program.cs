@@ -21,7 +21,7 @@ namespace MathClass
         static void Main(string[] args)
         {
             int choice;
-            ReadInt("What shape? 1) rectangle, 2) triangle, 3) circle 4) square", out choice);
+            ReadInt("What shape? 1) rectangle, 2) triangle, 3) circle 4) square ", out choice);
 
             switch (choice)
             {
@@ -46,7 +46,7 @@ namespace MathClass
                     Console.WriteLine($"Circumference is {sqr.calc_circfrc()}");
                     break;
                 default:
-                    Console.WriteLine("Not one of the choices, you failed this simple task...");
+                    Console.WriteLine("Not one of the choices");
                     break;
             }
         }
@@ -57,8 +57,8 @@ namespace MathClass
 
             public rectangle()
             {
-                this.side1 = get_input("length of one side?");
-                this.side2 = get_input("length of other side?");
+                this.side1 = get_input("length of one side? ");
+                this.side2 = get_input("length of other side? ");
             }
 
             override public double calc_circfrc()
@@ -72,7 +72,7 @@ namespace MathClass
 
             public triangle()
             {
-                this.side = get_input("lenth of side?");
+                this.side = get_input("lenth of side? ");
             }
 
             public override double calc_circfrc()
@@ -86,7 +86,7 @@ namespace MathClass
 
             public circle()
             {
-                this.radius = get_input("Radius of circle?");
+                this.radius = get_input("Radius of circle? ");
             }
 
             public override double calc_circfrc()
