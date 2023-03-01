@@ -19,6 +19,7 @@ namespace task_3_10
 
     internal class Cat
     {
+        //a private string "name" makes no difference here, does it not have encapulation?
         public string Name
         {
             get; set;
