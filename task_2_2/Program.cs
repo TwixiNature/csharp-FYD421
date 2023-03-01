@@ -5,6 +5,7 @@ när  objektet  skapas.  Detta  id-nummer  ska  inte  kunna  ändras  efter  att
 därför instansvariabeln som readonly. */
 
 using System;
+using System.Runtime.CompilerServices;
 
 //can you not make an instance of the class you have main in?
 
@@ -12,26 +13,28 @@ namespace Learning
 {
     internal class Classtest
     {
-        static int nrObj = 0;
-        readonly int ID;
+        static int nrObj = 0; //static variable 
+        readonly int ID; // id for objects
 
-        public Classtest()
+        public Classtest() // constructor
         {
-            nrObj++;
-            ID = nrObj;
+            ID = nrObj++; // increase static variable and give id to object
         }
 
-        public static int returnNr() { return nrObj; }
+        public static int returnNr() { return nrObj; } // return id
+
+        public int getID() { return this.ID; }
+
     }
 
     class Program
     {
         static void Main(string[] args)
         {
-            Classtest obj1 = new Classtest();
-            Console.WriteLine($"number of objects {Classtest.returnNr()}");
-            Classtest obj2 = new Classtest(); ;
-            Console.WriteLine($"number of objects {Classtest.returnNr()}");
+            Classtest obj1 = new Classtest(); // create first object
+            Console.WriteLine($"number of objects {Classtest.returnNr()} With ID {obj1.getID()}.");
+            Classtest obj2 = new Classtest(); ; // create second object
+            Console.WriteLine($"number of objects {Classtest.returnNr()} With ID {obj2.getID()}");
 
         }
     }

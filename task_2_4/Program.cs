@@ -9,27 +9,23 @@ namespace Game
 {
     internal class dice
     {
-        int face;
+        int face; // result of dice throw
         static Random rnd = new Random();
-        public dice()
+        public dice() // constructor
         {
         }
 
         void throw_dice()
         {
-            face = rnd.Next(0, 7); // new throw of dice
+            face = rnd.Next(1, 7); // new throw of dice value 1-6
         }
 
         static public bool is_sixes(dice dice1, dice dice2, dice dice3) // all three sixes?
         {
-            if (dice1.face == 6 && dice2.face == 6 && dice3.face == 6)
-            {
-                return true;
-            }
-            return false;
+            return dice1.face == 6 && dice2.face == 6 && dice3.face == 6;
         }
 
-        static public bool is_one_two_three(dice dice1, dice dice2, dice dice3) // if 1 2 3?
+        static public bool is_one_two_three(dice dice1, dice dice2, dice dice3) // if 1 2 3 in any order?
         {
             if (dice1.face == 1 && dice2.face == 2 && dice3.face == 3) { return true; }
             else if (dice1.face == 1 && dice2.face == 3 && dice3.face == 2) { return true; }
@@ -51,7 +47,7 @@ namespace Game
             dice dice3 = new dice();
 
 
-            for (int i = 0; i < throws; i++)
+            for (int i = 0; i < throws; i++) // for as many rounds as user input
             {
                 dice1.throw_dice(); // throw all three dice
                 dice2.throw_dice();
@@ -69,7 +65,7 @@ namespace Game
             }
 
 
-            return Tuple.Create(nrSixes, nrOneTwoThree);
+            return Tuple.Create(nrSixes, nrOneTwoThree); // return nr of 6-6-6s and 1-2-3s
         }
 
     }
@@ -82,7 +78,7 @@ namespace Game
 
             ReadInt("How many throws?", out throws); // get throws from player
 
-            Tuple<int, int> result = dice.gameloop(throws);
+            Tuple<int, int> result = dice.gameloop(throws); // play game
 
             Console.WriteLine($"You had {result.Item1} st 6-6-6 and {result.Item2} st 1-2-3"); // print result
 

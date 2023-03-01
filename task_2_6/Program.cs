@@ -5,7 +5,7 @@ namespace Game
 {
     internal class GuessNumberGame
     {
-        public int allowedGuesses = 7;
+        public const int allowedGuesses = 7;
         int guess;
         int currentNrGuesses;
         private int secretNumber;
@@ -14,17 +14,17 @@ namespace Game
         public GuessNumberGame() //constructor
         {
             newSecret();
-            this.currentNrGuesses = 0;
         }
 
         void newSecret() //get new random number 0-100
         {
             this.secretNumber = rnd.Next(0, 101);
+            this.currentNrGuesses = 0;
         }
 
-        public void newGuess() // get new guess from player
+        public bool newGuess() // get new guess from player
         {
-            ReadIntwithLimit("Guess a number between 0-100", out this.guess, 0, 100);
+            ReadIntwithLimit("Guess a number between 0-100 : ", out this.guess, 0, 100);
             this.currentNrGuesses++;
             if (this.guess < this.secretNumber) // print if too low
             {
@@ -34,6 +34,8 @@ namespace Game
             {
                 Console.WriteLine("Your guess was too high");
             }
+
+            return this.guess == this.secretNumber;
         }
 
         static void Main(string[] args)
@@ -43,26 +45,28 @@ namespace Game
 
             while (cont != 'N' && cont != 'n')
             {
-                while (game.currentNrGuesses < game.allowedGuesses && game.guess != game.secretNumber) //game loop
+                while (game.currentNrGuesses < GuessNumberGame.allowedGuesses && game.guess != game.secretNumber) //game loop
                 {
                     Console.WriteLine($"Guess nr {game.currentNrGuesses + 1}");
-                    game.newGuess();
+
+                    if (game.newGuess()) //get new guess, return tru if correct guess
+                    {
+                        Console.WriteLine("You guessed correctly!");
+                    }
 
                 }
-                if (game.guess == game.secretNumber) //if correct
-                {
-                    Console.WriteLine("You guessed correctly!");
-                }
-                else //if you loose
+                if (game.guess != game.secretNumber) //if you loose
                 {
                     Console.WriteLine("You failed");
                 }
+
                 Console.WriteLine("Do you want to play again?  N for No, any other character for Yes"); //play again?
                 cont = Console.ReadKey().KeyChar;
                 if (cont != 'N' || cont != 'n')
                 {
                     game.newSecret(); //start new game
                 }
+
             }
             Console.WriteLine("Quitting game");
         }
