@@ -22,16 +22,17 @@ namespace task_3_10
         public Form1()
         {
             InitializeComponent();
+            // array for going through all buttons in game
             Buttons = new Button[] { button1, button2, button3, button4, button5, button6, button7, button8, button9 };
 
         }
 
-        private bool allButtonsPressed()
+        private bool allButtonsPressed() // if the game board is full
         {
             return Buttons.All(b => b.BackColor != SystemColors.Control);
         }
 
-        private bool IsDub()
+        private bool SomeboyWon() // checks if three same colors in a row
         {
             bool IsSameColor(Button[] buttons)
             {
@@ -48,11 +49,11 @@ namespace task_3_10
             return false;
         }
 
-        private void PressButton(Button button)
+        private void PressButton(Button button) //functionality for button pressed in game
         {
             if (button.BackColor == SystemColors.Control && !GameOver)
             {
-                if (this.player1)
+                if (this.player1) //different color for different player
                 {
                     button.BackColor = Color.Black;
                 }
@@ -60,18 +61,18 @@ namespace task_3_10
                 {
                     button.BackColor = Color.Red;
                 }
-                if (IsDub())
+                if (SomeboyWon()) // check if current player has won
                 {
                     label1.Text = player1 ? "Player 1 wins" : "Player 2 wins";
                     this.GameOver = true;
                     return;
                 }
-                if (allButtonsPressed())
+                if (allButtonsPressed()) //check if board is full
                 {
                     label1.Text = "Game Over, nobody wins";
                     return;
                 }
-                this.player1 = !this.player1;
+                this.player1 = !this.player1; //change player turn
             }
 
 
